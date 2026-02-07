@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Billing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#111827">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Restaurant Billing</h1>
+    <div class="flow-steps">
+      <span>Select Items</span><span class="arrow">↓</span>
+      <span>Enter Quantity</span><span class="arrow">↓</span>
+      <span>Calculate Total</span><span class="arrow">↓</span>
+      <span>Add Tax / Discount</span><span class="arrow">↓</span>
+      <span>Take Payment</span><span class="arrow">↓</span>
+      <span>Print Bill</span><span class="arrow">↓</span>
+      <span>Save Record</span>
+    </div>
+
+    <div class="earnings-section">
+      <div class="earnings-card">
+        <span class="earnings-label">Today's Earnings</span>
+        <span class="earnings-value" id="todayEarnings">₹ 0</span>
+      </div>
+      <div class="earnings-card">
+        <span class="earnings-label">Monthly Earnings</span>
+        <span class="earnings-value" id="monthlyEarnings">₹ 0</span>
+      </div>
+    </div>
+
+    <div class="bill-header">
+      <input type="text" id="customerName" placeholder="Customer name">
+      <input type="text" id="tableNo" placeholder="Table no.">
+    </div>
+
+    <section class="step-section">
+      <h2 class="step-title"><span class="step-num">1–2</span> Select Items · Enter Quantity</h2>
+    <div class="menu-grid">
+      <div class="item-card" data-item="Poratta" data-price="40">
+        <div>
+          <div class="item-name">Poratta</div>
+          <div class="item-price">₹ 40</div>
+        </div>
+        <div class="item-qty">
+          <button type="button" aria-label="Decrease" data-action="minus">−</button>
+          <span data-qty>0</span>
+          <button type="button" aria-label="Increase" data-action="plus">+</button>
+        </div>
+      </div>
+      <div class="item-card" data-item="Dosa" data-price="50">
+        <div>
+          <div class="item-name">Dosa</div>
+          <div class="item-price">₹ 50</div>
+        </div>
+        <div class="item-qty">
+          <button type="button" aria-label="Decrease" data-action="minus">−</button>
+          <span data-qty>0</span>
+          <button type="button" aria-label="Increase" data-action="plus">+</button>
+        </div>
+      </div>
+      <div class="item-card" data-item="Chicken Rice" data-price="80">
+        <div>
+          <div class="item-name">Chicken Rice</div>
+          <div class="item-price">₹ 80</div>
+        </div>
+        <div class="item-qty">
+          <button type="button" aria-label="Decrease" data-action="minus">−</button>
+          <span data-qty>0</span>
+          <button type="button" aria-label="Increase" data-action="plus">+</button>
+        </div>
+      </div>
+      <div class="item-card" data-item="Half Boil" data-price="30">
+        <div>
+          <div class="item-name">Half Boil</div>
+          <div class="item-price">₹ 30</div>
+        </div>
+        <div class="item-qty">
+          <button type="button" aria-label="Decrease" data-action="minus">−</button>
+          <span data-qty>0</span>
+          <button type="button" aria-label="Increase" data-action="plus">+</button>
+        </div>
+      </div>
+      <div class="item-card" data-item="Omelette" data-price="45">
+        <div>
+          <div class="item-name">Omelette</div>
+          <div class="item-price">₹ 45</div>
+        </div>
+        <div class="item-qty">
+          <button type="button" aria-label="Decrease" data-action="minus">−</button>
+          <span data-qty>0</span>
+          <button type="button" aria-label="Increase" data-action="plus">+</button>
+        </div>
+      </div>
+      <div class="item-card" data-item="Chappathi" data-price="35">
+        <div>
+          <div class="item-name">Chappathi</div>
+          <div class="item-price">₹ 35</div>
+        </div>
+        <div class="item-qty">
+          <button type="button" aria-label="Decrease" data-action="minus">−</button>
+          <span data-qty>0</span>
+          <button type="button" aria-label="Increase" data-action="plus">+</button>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <section class="step-section bill-section">
+      <h2 class="step-title"><span class="step-num">3</span> Calculate Total</h2>
+      <div id="billRows" class="bill-rows">
+        <div class="empty-bill">Add items using + button</div>
+      </div>
+      <div id="subtotalRow" class="bill-row subtotal-row" style="display: none;">
+        <span>Subtotal</span>
+        <span id="subtotalAmount">₹ 0</span>
+      </div>
+      <div id="foodCostRow" class="bill-row food-cost-row" style="display: none;">
+        <span>Food cost (this order)</span>
+        <span id="foodCostAmount">₹ 0</span>
+      </div>
+    </section>
+
+    <section class="step-section tax-section">
+      <h2 class="step-title"><span class="step-num">4</span> Add Tax / Discount</h2>
+      <div class="tax-discount-inputs">
+        <div class="tax-input">
+          <label>Tax %</label>
+          <input type="number" id="taxPercent" value="0" min="0" max="100" step="0.5" placeholder="0">
+        </div>
+        <div class="tax-input">
+          <label>Discount %</label>
+          <input type="number" id="discountPercent" value="0" min="0" max="100" step="0.5" placeholder="0">
+        </div>
+      </div>
+      <div id="taxDiscountSummary" class="tax-summary" style="display: none;">
+        <div class="bill-row"><span>Tax</span><span id="taxAmount">₹ 0</span></div>
+        <div class="bill-row"><span>Discount</span><span id="discountAmount">₹ 0</span></div>
+        <div id="grandTotalRow" class="bill-row total-row">
+          <span>Grand Total</span>
+          <span id="grandTotalAmount">₹ 0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="step-section payment-section">
+      <h2 class="step-title"><span class="step-num">5</span> Take Payment</h2>
+      <div class="payment-row">
+        <label>Amount due</label>
+        <span id="paymentDue">₹ 0</span>
+      </div>
+      <div class="payment-row">
+        <label>Payment method</label>
+        <select id="paymentMethod">
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+          <option value="UPI">UPI</option>
+        </select>
+      </div>
+      <div class="payment-row">
+        <label>Amount received</label>
+        <input type="number" id="amountReceived" placeholder="0" min="0" step="1">
+      </div>
+      <div class="payment-row change-row" id="changeRow" style="display: none;">
+        <label>Change to return</label>
+        <span id="changeAmount" class="change-value">₹ 0</span>
+      </div>
+      <button type="button" class="btn btn-pay" id="btnCompletePayment">Complete payment</button>
+    </section>
+
+    <section class="step-section actions-section">
+      <h2 class="step-title"><span class="step-num">6–7</span> Print Bill · Save Record</h2>
+      <div class="actions">
+        <button type="button" class="btn btn-print" id="btnPrint">6. Print Bill</button>
+        <button type="button" class="btn btn-save" id="btnSaveRecord">7. Save Record</button>
+        <button type="button" class="btn btn-clear" id="btnClear">Clear All</button>
+        <button type="button" class="btn btn-download" id="btnDownload">Download Invoice</button>
+      </div>
+    </section>
+
+    <div class="records-section">
+      <h2>📁 Keeping records</h2>
+      <div class="records-toolbar">
+        <button type="button" class="btn btn-export" id="btnExportRecords">Export records</button>
+      </div>
+      <div id="recordsList" class="records-list">
+        <div class="empty-records">No records yet. Complete a payment to see records here.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+    </script>
+    
+</body>
+</html>
