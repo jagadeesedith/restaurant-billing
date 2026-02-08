@@ -25,6 +25,27 @@ h1 {
   font-weight: 700;
 }
 
+.quick-cash {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.cash-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #1f2937;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cash-btn:active {
+  transform: scale(0.96);
+}
+
 .flow-steps {
   display: flex;
   flex-wrap: wrap;
