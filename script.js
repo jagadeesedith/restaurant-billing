@@ -35,6 +35,32 @@ function saveSale(amount, items, paymentMethod, taxAmount, discountAmount) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(sales));
 }
 
+const amountReceivedInput = document.getElementById("amountReceived");
+const paymentDue = document.getElementById("paymentDue");
+const changeRow = document.getElementById("changeRow");
+const changeAmount = document.getElementById("changeAmount");
+
+function updateChange() {
+  const due = Number(paymentDue.innerText.replace("₹", ""));
+  const received = Number(amountReceivedInput.value);
+
+  if (received >= due) {
+    changeRow.style.display = "flex";
+    changeAmount.innerText = "₹ " + (received - due);
+  } else {
+    changeRow.style.display = "none";
+  }
+}
+
+document.querySelectorAll(".cash-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    amountReceivedInput.value = btn.dataset.value;
+    updateChange();
+  });
+});
+
+amountReceivedInput.addEventListener("input", updateChange);
+
 function getTodayEarnings() {
   const today = new Date().toISOString().slice(0, 10);
   return getSales()
