@@ -360,6 +360,20 @@ function doSaveRecord() {
   updatePaymentDisplay();
 }
 
+function syncMenuPricesToUI() {
+  document.querySelectorAll('.item-card').forEach(card => {
+    const name = card.dataset.item;
+    const item = menu.find(m => m.name === name);
+    if (!item) return;
+
+    const priceEl = card.querySelector('.item-price');
+    if (priceEl) {
+      priceEl.textContent = '₹ ' + item.price;
+    }
+  });
+}
+
+syncMenuPricesToUI();
 document.getElementById('btnCompletePayment').addEventListener('click', doSaveRecord);
 document.getElementById('btnSaveRecord').addEventListener('click', doSaveRecord);
 
