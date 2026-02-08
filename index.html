@@ -46,7 +46,7 @@
       <div class="item-card" data-item="Poratta" data-price="40">
         <div>
           <div class="item-name">Poratta</div>
-          <div class="item-price">₹ 40</div>
+          <div class="item-price">₹ 15</div>
         </div>
         <div class="item-qty">
           <button type="button" aria-label="Decrease" data-action="minus">−</button>
@@ -57,7 +57,7 @@
       <div class="item-card" data-item="Dosa" data-price="50">
         <div>
           <div class="item-name">Dosa</div>
-          <div class="item-price">₹ 50</div>
+          <div class="item-price">₹ 20</div>
         </div>
         <div class="item-qty">
           <button type="button" aria-label="Decrease" data-action="minus">−</button>
@@ -68,7 +68,7 @@
       <div class="item-card" data-item="Chicken Rice" data-price="80">
         <div>
           <div class="item-name">Chicken Rice</div>
-          <div class="item-price">₹ 80</div>
+          <div class="item-price">₹ 90</div>
         </div>
         <div class="item-qty">
           <button type="button" aria-label="Decrease" data-action="minus">−</button>
@@ -79,7 +79,7 @@
       <div class="item-card" data-item="Half Boil" data-price="30">
         <div>
           <div class="item-name">Half Boil</div>
-          <div class="item-price">₹ 30</div>
+          <div class="item-price">₹ 10</div>
         </div>
         <div class="item-qty">
           <button type="button" aria-label="Decrease" data-action="minus">−</button>
@@ -90,7 +90,7 @@
       <div class="item-card" data-item="Omelette" data-price="45">
         <div>
           <div class="item-name">Omelette</div>
-          <div class="item-price">₹ 45</div>
+          <div class="item-price">₹ 15</div>
         </div>
         <div class="item-qty">
           <button type="button" aria-label="Decrease" data-action="minus">−</button>
@@ -101,7 +101,7 @@
       <div class="item-card" data-item="Chappathi" data-price="35">
         <div>
           <div class="item-name">Chappathi</div>
-          <div class="item-price">₹ 35</div>
+          <div class="item-price">₹ 20</div>
         </div>
         <div class="item-qty">
           <button type="button" aria-label="Decrease" data-action="minus">−</button>
@@ -167,14 +167,15 @@
         <label>Amount received</label>
         <input type="number" id="amountReceived" placeholder="0" min="0" step="1">
       </div>
+      <div class="payment-row change-row" id="changeRow" style="display: none;">
+        <label>Change to return</label>
+
 <div class="quick-cash">
   <button type="button" class="cash-btn" data-value="50">₹50</button>
   <button type="button" class="cash-btn" data-value="100">₹100</button>
   <button type="button" class="cash-btn" data-value="200">₹200</button>
   <button type="button" class="cash-btn" data-value="500">₹500</button>
 </div>
-      <div class="payment-row change-row" id="changeRow" style="display: none;">
-        <label>Change to return</label>
         <span id="changeAmount" class="change-value">₹ 0</span>
       </div>
       <button type="button" class="btn btn-pay" id="btnCompletePayment">Complete payment</button>
