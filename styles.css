@@ -79,6 +79,28 @@ h1 {
   font-weight: 600;
 }
 
+.quick-cash {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.quick-cash button {
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #2a9d8f;
+  background: transparent;
+  color: #2a9d8f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quick-cash button:hover {
+  background: #2a9d8f;
+  color: #fff;
+}
+
 .step-num {
   display: inline-block;
   background: rgba(244, 162, 97, 0.25);
