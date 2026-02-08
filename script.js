@@ -1,10 +1,10 @@
 const menu = [
-  { name: 'Poratta', price: 40, cost: 15 },
-  { name: 'Dosa', price: 50, cost: 18 },
-  { name: 'Chicken Rice', price: 80, cost: 35 },
-  { name: 'Half Boil', price: 30, cost: 12 },
-  { name: 'Omelette', price: 45, cost: 18 },
-  { name: 'Chappathi', price: 35, cost: 12 }
+  { name: 'Poratta', price: 15, cost: 15 },
+  { name: 'Dosa', price: 20, cost: 18 },
+  { name: 'Chicken Rice', price: 90, cost: 35 },
+  { name: 'Half Boil', price: 10, cost: 12 },
+  { name: 'Omelette', price: 15, cost: 18 },
+  { name: 'Chappathi', price: 20, cost: 12 }
 ];
 
 const STORAGE_KEY = 'restaurant_billing_sales';
