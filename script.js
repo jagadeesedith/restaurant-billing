@@ -258,6 +258,19 @@ function downloadInvoice() {
   URL.revokeObjectURL(url);
 }
 
+document.querySelectorAll('.quick-cash button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const addAmount = parseInt(btn.dataset.cash);
+    const input = document.getElementById('amountReceived');
+
+    const current = parseInt(input.value) || 0;
+    input.value = current + addAmount;
+
+    updatePaymentDisplay(); // reuse your existing function
+  });
+});
+
+
 function updateBill() {
   const billRows = document.getElementById('billRows');
   const subtotalRow = document.getElementById('subtotalRow');
